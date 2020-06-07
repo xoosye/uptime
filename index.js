@@ -10,6 +10,7 @@ try {
   https.get(urlToHit, (resp) => {
     if (!expectedStatuses.includes(resp.statusCode)) {
       core.setFailed(`Request status was ${resp.statusCode}`);
+      console.log(`Sending message to Telegram...`);
     } else {
       console.log(`Successful check`);
       core.setOutput("status", resp.statusCode);
