@@ -6,7 +6,8 @@ try {
   const urlToHit = core.getInput('url-to-hit');
   const telegramToken = core.getInput('telegram-token');
   const telegramTo = core.getInput('telegram-to');
-  const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage?chat_id=${telegramTo}&parse_mode=Markdown&text=`
+  const telegramMsg = `Failed to reach your site: ${urlToHit}`
+  const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage?chat_id=${telegramTo}&parse_mode=Markdown&text=${telegramMsg}`
   
   const expectedStatuses = core.getInput('expected-statuses').split(",").map((status) => Number(status)) ;
   console.log(`Pinging ${urlToHit} and expecting ${expectedStatuses}`);
