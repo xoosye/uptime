@@ -8,6 +8,12 @@ inputs:
     description: 'which http response statuses are expected'
     required: false
     default: "200"
+  telegram-token:
+    description: 'Telegram Token'
+    required: true
+  telegram-to:
+    description: 'Telegram To'
+    required: true
 outputs:
   status: # id of output
     description: 'The http status we got'
