@@ -34,6 +34,18 @@ try {
   }).on("error", (err) => {
     console.log(`Request failed`);
     core.setFailed(err.message);
+    https.get(telegramUrl, (resp) => {
+      let tele_status = resp.statusCode
+      if (tele_status == 200) {
+        console.log(`Sent msg to telegram`);
+      } else {
+        console.log(`Failed to send msg to telegram, statusCode: ${tele_status} :`);
+        console.log(resp);
+      }
+    }).on("error", (err) => {
+      console.log(`Failed to send msg to telegram:`);
+      console.log(err);
+    })    
   })
 } catch (error) {
   core.setFailed(error.message);
